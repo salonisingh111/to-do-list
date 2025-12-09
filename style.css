@@ -1,0 +1,239 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  position: relative;
+  z-index: 5;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: #654588;
+  position: relative;
+}
+
+/* Wave Layer 1 */
+body::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.5) 20%,
+    transparent 70%
+  );
+  animation: wave1 8s linear infinite;
+  opacity: 0.4;
+  z-index: -1;
+}
+
+/* Wave Layer 2 (YOU WERE MISSING THIS) */
+body::after {
+  content: "";
+  position: absolute;
+  top: -30%;
+  left: -30%;
+  width: 160%;
+  height: 160%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 20%,
+    transparent 70%
+  );
+  animation: wave2 12s linear infinite;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+@keyframes wave1 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(10%, 10%) rotate(180deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg);
+  }
+}
+
+@keyframes wave2 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(-10%, -10%) rotate(180deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg);
+  }
+}
+
+#heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 2.5rem;
+  color: white;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.main {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 90px;
+  gap: 25px;
+}
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+#input {
+  width: 17rem;
+  height: 2rem;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  border-color: rgb(134, 8, 245);
+  border-width: 3px;
+}
+
+#add {
+  cursor: pointer;
+  width: 3rem;
+  height: 2rem;
+  border-radius: 10px;
+  margin-left: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(5px);
+  color: #3c0378;
+  border-color: rgb(134, 8, 245);
+}
+
+#btn {
+  display: flex;
+  justify-content: flex-end;
+  padding: 30px;
+}
+
+#changeBtn {
+  cursor: pointer;
+  padding: 5px;
+  width: 6.5rem;
+  height: 2rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(5px);
+  color: #3c0378;
+  border: 2.5px solid rgb(134, 8, 245);
+}
+#ListBox {
+  width: 300px;
+  margin-left: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  margin: 10px -40px auto;
+  width: 120%;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+}
+
+.delBtn {
+  width: 3rem;
+  height: 1.5rem;
+  border-radius: 10px;
+  background: rgba(179, 59, 186, 0.7);
+  backdrop-filter: blur(5px);
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.bgChange {
+  margin: 0;
+  min-height: 100vh;
+  font-family: sans-serif;
+
+  background: linear-gradient(-45deg, #587a87, #795e8b, #7197ba, #e3a6be);
+  background-size: 400% 400%;
+  animation: skyMove 12s ease infinite;
+}
+
+@keyframes skyMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bgChange #heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 2.5rem;
+  color: #2b2b4f;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+#clearAll {
+  cursor: pointer;
+  width: 4.5rem;
+  height: 2rem;
+  border-radius: 10px;
+  margin-right: 40px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(5px);
+  color: #3c0378;
+  border-color: rgb(134, 8, 245);
+}
+
+.done {
+  width: 3rem;
+  height: 1.5rem;
+  border-radius: 10px;
+  background: rgba(48, 135, 104, 0.7);
+  backdrop-filter: blur(5px);
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.btnWrap {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+ .completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}

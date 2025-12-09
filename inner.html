@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo list by myself</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="btn">
+            <button id="changeBtn">Change Bg</button>
+        </div>
+        <P id="heading">Your To Do List</P>
+        <div class="main">
+            <div class="inputRow">
+                <input type="text" id="input" placeholder="write your task here...">
+                <button id="add">Add</button>
+                <button id="clearAll">Clear All</button>
+
+            </div>
+        </div>
+        <div class="para">
+            <p id="msg"></p>
+        </div>
+
+        <div id="ListBox">
+            </button>
+        </div>
+    </div>
+</body>
+
+<script>
+    let input = document.getElementById("input");
+    let btn = document.getElementById("add");
+    let box = document.getElementById("ListBox");
+    let changeBtn = document.getElementById("changeBtn");
+    let clearAll = document.getElementById("clearAll");
+
+    input.addEventListener("keydown", function (event) {
+        if (event.key == "Enter") {
+            btn.click();
+            input.value="";
+        }
+    })
+
+    btn.addEventListener("click", function () {
+        let value = input.value;
+        if (value === "") {
+            alert("Please add your task");
+            return;
+        }
+
+        let item = document.createElement("div");
+        item.classList.add("item");
+
+        let text = document.createElement("p");
+        text.innerText = value;
+
+        let delBtn = document.createElement("button");
+        delBtn.innerText = "Delete";
+        delBtn.classList.add("delBtn");
+
+        delBtn.addEventListener("click", function () {
+            item.remove();
+        })
+
+        let done = document.createElement("button");
+        done.innerText = "Done";
+        done.classList.add("done");
+
+        done.addEventListener("click", function () {
+            text.classList.toggle("completed");
+        })
+
+        let btnWrap = document.createElement("div");
+        btnWrap.classList.add("btnWrap");
+
+        btnWrap.appendChild(done);
+        btnWrap.appendChild(delBtn);
+
+        item.appendChild(text);
+        item.appendChild(btnWrap);
+        box.appendChild(item);
+
+    });
+
+    changeBtn.addEventListener("click", function () {
+        document.body.classList.toggle("bgChange");
+    });
+
+    clearAll.addEventListener("click", function () {
+        if (box.children.length === 0) {
+            alert("No task to delete");
+            return;
+
+        }
+
+        let confirmClear = confirm("Are you sure you want to delete all tasks?");
+
+        if (confirmClear) {
+            box.innerHTML = "";
+        }
+    })
+
+</script>
+
+</html>
